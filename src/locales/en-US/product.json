@@ -3,5 +3,6 @@
 	"platform": "Platform",
 	"table": "Table",
 	"id": "ID",
-    "category": "Category"
+	"category": "Category",
+	"brand_name": "Brand Name"
 }
