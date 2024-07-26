@@ -12,7 +12,8 @@ import { t } from "#src/locales";
 
 const Menu1And1 = lazy(() => import("#src/pages/route-nest/menu1/menu1-1"));
 const Menu1And2 = lazy(() => import("#src/pages/route-nest/menu1/menu1-2"));
-const Menu2 = lazy(() => import("#src/pages/route-nest/menu2"));
+const Menu2And1 = lazy(() => import("#src/pages/route-nest/menu2/menu2-1"));
+const Menu2And2 = lazy(() => import("#src/pages/route-nest/menu2/menu2-2"));
 
 const routes: AppRouteRecordRaw[] = [
 	{
@@ -57,11 +58,31 @@ const routes: AppRouteRecordRaw[] = [
 			{
 				path: "/route-nest/menu2",
 				id: "route-nest_menu2",
-				Component: Menu2,
+				Component: ParentLayout,
 				handle: {
 					title: t("common.menu.menu2"),
 					icon: createElement(SubnodeOutlined),
 				},
+				children: [
+					{
+						path: "/route-nest/menu2/menu2-1",
+						id: "route-nest_menu2_menu2-1",
+						Component: Menu2And1,
+						handle: {
+							title: t("common.menu.menu2-1"),
+							icon: createElement(SubnodeOutlined),
+						},
+					},
+					{
+						path: "/route-nest/menu2/menu2-2",
+						id: "route-nest_menu2_menu2-2",
+						Component: Menu2And2,
+						handle: {
+							title: t("common.menu.menu2-2"),
+							icon: createElement(SubnodeOutlined),
+						},
+					},
+				],
 			},
 		],
 	},
