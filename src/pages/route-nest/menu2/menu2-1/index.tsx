@@ -14,6 +14,7 @@ const getBase64 = (file: FileType): Promise<string> =>
 		reader.onerror = (error) => reject(error);
 	});
 
+//file server port
 const base_url = "http://127.0.0.1:8001/";
 
 export default function Menu2And1() {

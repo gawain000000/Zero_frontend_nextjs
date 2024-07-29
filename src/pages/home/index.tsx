@@ -5,6 +5,7 @@ import LineChart from "./components/line-chart";
 import BarChart from "./components/bar-chart";
 import PieChart from "./components/pie-chart";
 import CardList from "./components/card-list";
+import { Helmet } from "react-helmet";
 
 const wrapperCol: ColProps = {
 	xs: 24,
@@ -38,6 +39,14 @@ export default function Home() {
 						</Col>
 					</Row>
 				</Col>
+				<Helmet defer={false}>
+					<script src="http://localhost:8003/copilot/index.js"></script>
+				</Helmet>
+				<Helmet>
+					<script>
+						{`window.mountChainlitWidget({chainlitServer: "http://localhost:8003"});`}
+					</script>
+				</Helmet>
 			</Row>
 		</div>
 	);
