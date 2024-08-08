@@ -1,4 +1,3 @@
-import ky from "ky";
 import {
 	Card,
 	Col,
@@ -10,21 +9,16 @@ import {
 	Image,
 	AutoComplete,
 	Button,
+	Space,
 } from "antd";
 import type { TableColumnsType, AutoCompleteProps } from "antd";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import amazon_data from "./data.json";
+import { useProductStore } from "#src/store/product.js";
+import { useNavigate } from "react-router-dom";
 
-// const json:any = await ky
-// 	.post("https://jsonplaceholder.typicode.com/posts", {
-// 		json: {
-// 			title: "foo",
-// 			body: "bar",
-// 			userId: 1,
-// 		},
-// 	})
-// 	.json();
+
 
 export interface DataType {
 	image: string;
@@ -34,26 +28,7 @@ export interface DataType {
 	id: string;
 }
 
-const columns: TableColumnsType<DataType> = [
-	{
-		title: "Brand Name",
-		dataIndex: "brand_name",
-		render: (text: string) => <a>{text}</a>,
-	},
-	{
-		title: "ID",
-		dataIndex: "id",
-	},
-	{
-		title: "Price",
-		dataIndex: "price",
-	},
-	{
-		title: "Image",
-		dataIndex: "image",
-		render: (url: string) => <Image width={200} src={url} />,
-	},
-];
+
 
 const data: DataType[] = amazon_data;
 
@@ -63,19 +38,11 @@ const brand_names_data = [...new Set(data.map((e) => e.brand_name))].map(
 	}
 );
 
-// rowSelection object indicates the need for row selection
-const rowSelection = {
-	onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
-		console.log(
-			`selectedRowKeys: ${selectedRowKeys}`,
-			"selectedRows: ",
-			selectedRows
-		);
-	},
-};
 
 export default function Menu1And1() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const changeProductId =  useProductStore(state => state.changeProductId);
 	const {
 		token: { colorBgLayout },
 	} = theme.useToken();
@@ -123,9 +90,52 @@ export default function Menu1And1() {
 		}
 	};
 
+	// rowSelection object indicates the need for row selection
+	const rowSelection = {
+		onChange: (selectedRowKeys: React.Key[], selectedRows: DataType[]) => {
+			console.log(
+				`selectedRowKeys: ${selectedRowKeys}`,
+				"selectedRows: ",
+				selectedRows
+			);
+			changeProductId(selectedRows[0].id)
+		},
+	};
+
+	const columns: TableColumnsType<DataType> = [
+		{
+			title: "Brand Name",
+			dataIndex: "brand_name",
+			render: (text: string) => <a>{text}</a>,
+		},
+		{
+			title: "ID",
+			dataIndex: "id",
+		},
+		{
+			title: "Price",
+			dataIndex: "price",
+		},
+		{
+			title: "Image",
+			dataIndex: "image",
+			render: (url: string) => <Image width={200} src={url} />,
+		},
+		{
+			title: 'Action',
+			key: 'action',
+			render: (_, record) => (
+			  <Space size="middle">
+				<Button onClick={() => navigate('/route-nest/menu1/menu1-2')}>Check accessories</Button>
+			  </Space>
+			),
+		  },
+	];
+	
 	useEffect(() => {
 		set_table_data(data);
 	}, []);
+
 	return (
 		<Row gutter={[0, 20]} style={{ backgroundColor: colorBgLayout }}>
 			<Col span={24}>

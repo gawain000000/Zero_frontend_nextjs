@@ -16,10 +16,10 @@ export default defineFakeRoute([
 		// statusCode: 400,
 		// response: () => ({ code: 404, message: "Not found" }),
 		response: ({ body }) => {
-			if (body.username === "admin") {
+			if (body.username === "admin" && body.password === "password") {
 				return resultSuccess({
 					userId: "1",
-					avatar: "https://avatars.githubusercontent.com/u/47056890",
+					avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Felis_catus-cat_on_snow.jpg/1280px-Felis_catus-cat_on_snow.jpg",
 					username: "Admin",
 					nickname: "Admin",
 					description: "manager",
@@ -31,7 +31,7 @@ export default defineFakeRoute([
 			else {
 				return resultSuccess({
 					userId: "2",
-					avatar: "https://avatars.githubusercontent.com/u/47056890",
+					avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sheba1.JPG/800px-Sheba1.JPG",
 					username: "Tom",
 					nickname: "Tom",
 					description: "employee",
