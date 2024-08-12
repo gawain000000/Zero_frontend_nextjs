@@ -2,17 +2,22 @@ import type { MenuProps } from "antd";
 import { Avatar, Dropdown } from "antd";
 
 import { useUserStore } from "#src/store";
+import { useTranslation } from "react-i18next";
 
-const items: MenuProps["items"] = [
-	{
-		label: "退出登录",
-		key: "logout",
-	},
-];
 
 export default function UserMenu() {
 	const avatar = useUserStore(state => state.avatar);
 	const logout = useUserStore(state => state.logout);
+	const { t } = useTranslation();
+	
+	const items: MenuProps["items"] = [
+		{
+			label: t('menu.logout'),
+			key: "logout",
+		},
+	];
+
+	
 	const onClick: MenuProps["onClick"] = async ({ key }) => {
 		if (key === "logout") {
 			await logout();
