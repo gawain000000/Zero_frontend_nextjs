@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import amazon_data from "./data.json";
 import { useProductStore } from "#src/store/product.js";
 import { useNavigate } from "react-router-dom";
+import ChatBotWidget from "#src/components/chatbot-widget/ChatBotWidget.js";
 
 
 
@@ -42,12 +43,14 @@ const brand_names_data = [...new Set(data.map((e) => e.brand_name))].map(
 export default function Menu1And1() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const changeProductId =  useProductStore(state => state.changeProductId);
+	const changeProductId = useProductStore(state => state.changeProductId);
 	const {
 		token: { colorBgLayout },
 	} = theme.useToken();
 
 	const [id_value, set_id_value] = useState("");
+	const [messages, setMessages] = useState<string[]>([]);
+
 	const [id_options, set_id_options] = useState<AutoCompleteProps["options"]>(
 		[]
 	);
@@ -125,13 +128,13 @@ export default function Menu1And1() {
 			title: 'Action',
 			key: 'action',
 			render: (_, record) => (
-			  <Space size="middle">
-				<Button onClick={() => navigate('/route-nest/menu1/menu1-2')}>Check accessories</Button>
-			  </Space>
+				<Space size="middle">
+					<Button onClick={() => navigate('/route-nest/menu1/menu1-2')}>Check accessories</Button>
+				</Space>
 			),
-		  },
+		},
 	];
-	
+
 	useEffect(() => {
 		set_table_data(data);
 	}, []);
@@ -208,6 +211,19 @@ export default function Menu1And1() {
 					/>
 				</Card>
 			</Col>
+			<ChatBotWidget
+				apiKey="sk-Z2Vc7pUs3P9OAaTqt7NFla1ytpfiIEdE1HTDUO98rZpjcAbZ"
+				baseURL="https://api.chatanywhere.cn/v1/chat/completions"
+				model="gpt-4o-mini"
+				chatIcon={<div>chat</div>}
+				chatbotName="chatbot"
+				isTypingMessage="Typing..."
+				IncommingErrMsg="Oops! Something went wrong !"
+				primaryColor="#eb4034"
+				inputMsgPlaceholder="Send a Message"
+				conversation={messages}
+				handleNewMessage={setMessages}
+			/>
 		</Row>
 	);
 }

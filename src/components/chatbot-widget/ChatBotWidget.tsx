@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./style.css"; // Import your stylesheet
+import "./chat-style.css"; // Import your stylesheet
 
 interface ChatWidgetIOProps {
     apiKey: string;

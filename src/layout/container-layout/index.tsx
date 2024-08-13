@@ -89,10 +89,12 @@ export default function ContainerLayout() {
 						}}
 					>
 						<ParentLayout />
+
 					</main>
+					
+					{/*put ChatBotWidget here will affect fonts and other styles, haven't figured out a way*/}
 
-
-					<ChatBotWidget
+					{/* <ChatBotWidget
 						apiKey="sk-Z2Vc7pUs3P9OAaTqt7NFla1ytpfiIEdE1HTDUO98rZpjcAbZ"
 						baseURL="https://api.chatanywhere.cn/v1/chat/completions"
 						model="gpt-4o-mini"
@@ -104,7 +106,7 @@ export default function ContainerLayout() {
 						inputMsgPlaceholder="Send a Message"
 						conversation={messages}
 						handleNewMessage={setMessages}
-					/>
+					/> */}
 
 				</Content>
 				{/* <Footer /> */}
