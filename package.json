@@ -35,8 +35,6 @@
 	"dependencies": {
 		"@ai-sdk/openai": "^0.0.40",
 		"@ant-design/icons": "^5.3.7",
-		"@ant-design/pro-chat": "^1.15.1",
-		"@types/react-helmet": "^6.1.11",
 		"ai": "^3.2.37",
 		"antd": "^5.19.2",
 		"antd-style": "^3.6.2",

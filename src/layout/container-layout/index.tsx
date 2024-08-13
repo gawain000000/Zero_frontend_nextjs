@@ -10,6 +10,7 @@ import ParentLayout from "../parent-layout";
 import BreadcrumbTags from "../breadcrumb-tags";
 
 import { useGlobalStore } from "#src/store";
+import ChatBotWidget from "#src/components/chatbot-widget/ChatBotWidget.js";
 
 const { Content, Sider } = Layout;
 
@@ -41,6 +42,8 @@ const useStyles = createUseStyles({
  */
 export default function ContainerLayout() {
 	const [collapsed, setCollapsed] = useState(false);
+	const [messages, setMessages] = useState<string[]>([]);
+
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
@@ -87,6 +90,22 @@ export default function ContainerLayout() {
 					>
 						<ParentLayout />
 					</main>
+
+
+					<ChatBotWidget
+						apiKey="sk-Z2Vc7pUs3P9OAaTqt7NFla1ytpfiIEdE1HTDUO98rZpjcAbZ"
+						baseURL="https://api.chatanywhere.cn/v1/chat/completions"
+						model="gpt-4o-mini"
+						chatIcon={<div>chat</div>}
+						chatbotName="chatbot"
+						isTypingMessage="Typing..."
+						IncommingErrMsg="Oops! Something went wrong !"
+						primaryColor="#eb4034"
+						inputMsgPlaceholder="Send a Message"
+						conversation={messages}
+						handleNewMessage={setMessages}
+					/>
+
 				</Content>
 				{/* <Footer /> */}
 			</Layout>
