@@ -1,8 +1,8 @@
 {
-	"selection": "Selection",
-	"platform": "Platform",
-	"table": "Table",
-	"id": "ID",
-	"category": "Category",
-	"brand_name": "Brand Name"
+  "selection": "Selection",
+  "platform": "Platform",
+  "table": "Table",
+  "id": "ID",
+  "category": "Category",
+  "brand_name": "Brand Name"
 }

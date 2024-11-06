@@ -3,4 +3,4 @@
 // expect(element).toHaveTextContent(/react/i)
 
 // https://github.com/testing-library/jest-dom/issues/515#issuecomment-1758934011
-import "@testing-library/jest-dom/vitest";
+import '@testing-library/jest-dom/vitest'

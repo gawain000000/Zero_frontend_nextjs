@@ -1,7 +1,7 @@
 /* Inspired by https://github.com/rafgraph/spa-github-pages */
-import { writeFile } from "node:fs/promises";
-import { join } from "node:path";
-import process from "node:process";
+import { writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import process from 'node:process'
 
 const template404 = `
 <!DOCTYPE html>
@@ -47,22 +47,22 @@ const template404 = `
 </body>
 
 </html>
-`;
+`
 
 async function main() {
-	try {
-		const workDir = process.cwd();
-		const buildPath = join(workDir, "build", "404.html");
+  try {
+    const workDir = process.cwd()
+    const buildPath = join(workDir, 'build', '404.html')
 
-		await writeFile(buildPath, template404);
+    await writeFile(buildPath, template404)
 
-		console.log(
-			`The content has been successfully written to the ${buildPath} file`,
-		);
-	}
-	catch (error) {
-		console.error(error);
-	}
+    console.log(
+      `The content has been successfully written to the ${buildPath} file`,
+    )
+  }
+  catch (error) {
+    console.error(error)
+  }
 }
 
-main();
+main()

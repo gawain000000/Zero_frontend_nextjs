@@ -1,15 +1,15 @@
-import { App } from "antd";
-import type { ReactNode } from "react";
-import { StaticAntd } from "#src/utils";
+import { App } from 'antd'
+import type { ReactNode } from 'react'
+import { StaticAntd } from '#src/utils'
 
 export interface AntdAppProps {
-	children: ReactNode
+  children: ReactNode
 }
 export function AntdApp({ children }: AntdAppProps) {
-	return (
-		<App className="h-full">
-			<StaticAntd />
-			{children}
-		</App>
-	);
+  return (
+    <App className="h-full">
+      <StaticAntd />
+      {children}
+    </App>
+  )
 }

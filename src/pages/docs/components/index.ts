@@ -1,1 +1,1 @@
-export * from "./hash-anchor";
+export * from './hash-anchor'

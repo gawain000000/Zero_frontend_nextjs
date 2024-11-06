@@ -1,26 +1,26 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 const initialState = {
-	selectedProductID: "",
-};
+  selectedProductID: '',
+}
 
-type ProductState = typeof initialState;
+type ProductState = typeof initialState
 
 interface ProductAction {
-	changeProductId: (product_id:string) => void
+  changeProductId: (product_id: string) => void
 };
 
 export const useProductStore = create<ProductState & ProductAction>()(
 
-	persist(set => ({
-		...initialState,
+  persist(set => ({
+    ...initialState,
 
-		changeProductId: (payload) => {
-			return set({
-				selectedProductID: payload,
-			});
-		}
-	}), { name: "product-info" }),
+    changeProductId: (payload) => {
+      return set({
+        selectedProductID: payload,
+      })
+    },
+  }), { name: 'product-info' }),
 
-);
+)

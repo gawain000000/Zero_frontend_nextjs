@@ -1,5 +1,5 @@
-import type { ThemeConfig } from "antd";
+import type { ThemeConfig } from 'antd'
 /**
  * @see https://ant.design/theme-editor-cn
  */
-export const customAntdTheme: ThemeConfig = {};
+export const customAntdTheme: ThemeConfig = {}

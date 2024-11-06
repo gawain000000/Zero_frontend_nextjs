@@ -9,7 +9,7 @@ export const i18nAlly = `
 	"i18n-ally.enabledFrameworks": ["react-i18next"],
 	"i18n-ally.keystyle": "nested"
 }
-`;
+`
 
 export const useInJSX = `
 import { useTranslation } from "react-i18next";
@@ -22,9 +22,9 @@ export default function About() {
 		</div>
 	);
 }
-`;
+`
 
 export const useInPureJS = `
 import { t } from "#src/locales";
 const title = t("common.menu.about");
-`;
+`

@@ -1,41 +1,41 @@
 interface Bar<A> {
-	[key: string]: A
+  [key: string]: A
 }
 
-type FileModule = Bar<FileModule>;
-type FileParams = Record<string, FileModule>;
+type FileModule = Bar<FileModule>
+type FileParams = Record<string, FileModule>
 
 export function getZhCnLang() {
-	const langFiles = import.meta.glob<FileParams>("./zh-CN/**/*.json", {
-		import: "default",
-		eager: true,
-	});
-	const result = handleFileList(langFiles);
-	return result;
+  const langFiles = import.meta.glob<FileParams>('./zh-CN/**/*.json', {
+    import: 'default',
+    eager: true,
+  })
+  const result = handleFileList(langFiles)
+  return result
 }
 
 export function getEnUsLang() {
-	const langFiles = import.meta.glob<FileParams>("./en-US/**/*.json", {
-		import: "default",
-		eager: true,
-	});
-	const result = handleFileList(langFiles);
-	return result;
+  const langFiles = import.meta.glob<FileParams>('./en-US/**/*.json', {
+    import: 'default',
+    eager: true,
+  })
+  const result = handleFileList(langFiles)
+  return result
 }
 
 export function handleFileList(files: FileParams) {
-	const result: FileModule = {};
+  const result: FileModule = {}
 
-	for (const key in files) {
-		const data = files[key];
-		const fileArr = key?.split("/");
-		const fileName = fileArr[fileArr?.length - 1];
-		if (!fileName)
-			continue;
-		const name = fileName.split(".json")[0];
-		if (name)
-			result[name] = data;
-	}
+  for (const key in files) {
+    const data = files[key]
+    const fileArr = key?.split('/')
+    const fileName = fileArr[fileArr?.length - 1]
+    if (!fileName)
+      continue
+    const name = fileName.split('.json')[0]
+    if (name)
+      result[name] = data
+  }
 
-	return result;
+  return result
 }

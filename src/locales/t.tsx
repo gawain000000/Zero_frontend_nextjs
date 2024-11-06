@@ -1,4 +1,4 @@
-import { Trans } from "react-i18next";
+import { Trans } from 'react-i18next'
 
 /**
  * @link https://github.com/i18next/react-i18next/issues/1058
@@ -13,5 +13,5 @@ import { Trans } from "react-i18next";
  * Here, t.tsx file is used as a temporary solution to enable the usage of the t function in pure JS or TS files.
  */
 export function t(path: string) {
-	return <Trans>{path}</Trans>;
+  return <Trans>{path}</Trans>
 }

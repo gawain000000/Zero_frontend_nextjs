@@ -1,34 +1,33 @@
-import { Drawer, Layout, theme } from "antd";
-import { useState } from "react";
-import { createUseStyles } from "react-jss";
+import { Drawer, Layout, theme } from 'antd'
+import { useState } from 'react'
+import { createUseStyles } from 'react-jss'
 
-import Logo from "../logo";
-import Header from "../header";
+import Logo from '../logo'
+import Header from '../header'
 // import Footer from "./components/footer";
-import SiderMenu from "../sider-menu";
-import ParentLayout from "../parent-layout";
-import BreadcrumbTags from "../breadcrumb-tags";
+import SiderMenu from '../sider-menu'
+import ParentLayout from '../parent-layout'
+import BreadcrumbTags from '../breadcrumb-tags'
 
-import { useGlobalStore } from "#src/store";
-import ChatBotWidget from "#src/components/chatbot-widget/ChatBotWidget.js";
+import { useGlobalStore } from '#src/store'
 
-const { Content, Sider } = Layout;
+const { Content, Sider } = Layout
 
 const useStyles = createUseStyles({
-	drawerStyles: {
-		"& .ant-drawer-body": {
-			"padding": 0,
-			"height": "100%",
-			"&>ul": {
-				paddingTop: "1em",
-			},
-		},
-		"& .ant-drawer-header": {
-			// backgroundColor: "#001529",
-			display: "none",
-		},
-	},
-});
+  drawerStyles: {
+    '& .ant-drawer-body': {
+      'padding': 0,
+      'height': '100%',
+      '&>ul': {
+        paddingTop: '1em',
+      },
+    },
+    '& .ant-drawer-header': {
+      // backgroundColor: "#001529",
+      display: 'none',
+    },
+  },
+})
 
 /**
  * Please do not use this component through lazy, otherwise the switching routing page will flash.
@@ -41,60 +40,60 @@ const useStyles = createUseStyles({
  * import { ContainerLayout } from "#src/layout";
  */
 export default function ContainerLayout() {
-	const [collapsed, setCollapsed] = useState(false);
-	const [messages, setMessages] = useState<string[]>([]);
+  const [collapsed, setCollapsed] = useState(false)
+  const [messages, setMessages] = useState<string[]>([])
 
-	const {
-		token: { colorBgContainer },
-	} = theme.useToken();
-	const classes = useStyles();
-	const isMobile = useGlobalStore(state => state.isMobile);
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken()
+  const classes = useStyles()
+  const isMobile = useGlobalStore(state => state.isMobile)
 
-	return (
-		<Layout>
-			{isMobile
-				? (
-					<Drawer
-						open={collapsed}
-						placement="left"
-						width="clamp(200px, 50vw, 210px)"
-						className={classes.drawerStyles}
-						// title={<img src={logo} alt="logo" style={{ width: "1em" }} />}
-						onClose={() => setCollapsed(false)}
-					>
-						<SiderMenu />
-					</Drawer>
-				)
-				: (
-					<Sider trigger={null} collapsible collapsed={collapsed}>
-						<Logo collapsed={collapsed} />
-						<SiderMenu />
-					</Sider>
-				)}
+  return (
+    <Layout>
+      {isMobile
+        ? (
+            <Drawer
+              open={collapsed}
+              placement="left"
+              width="clamp(200px, 50vw, 210px)"
+              className={classes.drawerStyles}
+              // title={<img src={logo} alt="logo" style={{ width: "1em" }} />}
+              onClose={() => setCollapsed(false)}
+            >
+              <SiderMenu />
+            </Drawer>
+          )
+        : (
+            <Sider trigger={null} collapsible collapsed={collapsed}>
+              <Logo collapsed={collapsed} />
+              <SiderMenu />
+            </Sider>
+          )}
 
-			<Layout>
-				<Header collapsed={collapsed} setCollapsed={setCollapsed} />
-				<BreadcrumbTags />
-				<Content
-					style={{
-						scrollBehavior: "smooth",
-						overflow: "auto",
-						padding: "0.5em 1em 1em",
-						height: "calc(100vh - 48px - 32.391px - 2px)",
-					}}
-				>
-					<main
-						style={{
-							backgroundColor: colorBgContainer,
-						}}
-					>
-						<ParentLayout />
+      <Layout>
+        <Header collapsed={collapsed} setCollapsed={setCollapsed} />
+        <BreadcrumbTags />
+        <Content
+          style={{
+            scrollBehavior: 'smooth',
+            overflow: 'auto',
+            padding: '0.5em 1em 1em',
+            height: 'calc(100vh - 48px - 32.391px - 2px)',
+          }}
+        >
+          <main
+            style={{
+              backgroundColor: colorBgContainer,
+            }}
+          >
+            <ParentLayout />
 
-					</main>
-					
-					{/*put ChatBotWidget here will affect fonts and other styles, haven't figured out a way*/}
+          </main>
 
-					{/* <ChatBotWidget
+          {/* put ChatBotWidget here will affect fonts and other styles, haven't figured out a way */}
+
+          {/* <ChatBotWidget
 						apiKey="sk-Z2Vc7pUs3P9OAaTqt7NFla1ytpfiIEdE1HTDUO98rZpjcAbZ"
 						baseURL="https://api.chatanywhere.cn/v1/chat/completions"
 						model="gpt-4o-mini"
@@ -108,9 +107,9 @@ export default function ContainerLayout() {
 						handleNewMessage={setMessages}
 					/> */}
 
-				</Content>
-				{/* <Footer /> */}
-			</Layout>
-		</Layout>
-	);
+        </Content>
+        {/* <Footer /> */}
+      </Layout>
+    </Layout>
+  )
 }

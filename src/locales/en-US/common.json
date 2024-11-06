@@ -1,32 +1,32 @@
 {
-	"menu": {
-		"home": "Home",
-		"about": "About",
-		"nestMenus": "Nest Menus",
-		"menu1": "Menu1",
-		"menu1-1": "Menu1-1",
-		"menu1-2": "Menu1-2",
-		"menu2": "Menu2",
-		"menu2-1": "Menu2-1",
-		"menu2-2": "Menu2-2",
-		"menu2-3": "Menu2-3",
-		"iframe": "External Page",
-		"docs": "Docs",
-		"guide": "Guide",
-		"introduction": "Introduction",
-		"i18n": "I18n"
-	},
-	"username": "User Name",
-	"password": "Password",
-	"login": "Log In",
-	"backHome": "Back Home",
-	"back": "Back",
-	"warning": "Warning",
-	"delete": "Delete",
-	"upload": "Upload",
-	"404SubTitle": "Sorry, the page you visited does not exist.",
-	"projectSettings": {
-		"title": "Project Settings",
-		"theme": "Theme"
-	}
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "nestMenus": "Nest Menus",
+    "menu1": "Menu1",
+    "menu1-1": "Menu1-1",
+    "menu1-2": "Menu1-2",
+    "menu2": "Menu2",
+    "menu2-1": "Menu2-1",
+    "menu2-2": "Menu2-2",
+    "menu2-3": "Menu2-3",
+    "iframe": "External Page",
+    "docs": "Docs",
+    "guide": "Guide",
+    "introduction": "Introduction",
+    "i18n": "I18n"
+  },
+  "username": "User Name",
+  "password": "Password",
+  "login": "Log In",
+  "backHome": "Back Home",
+  "back": "Back",
+  "warning": "Warning",
+  "delete": "Delete",
+  "upload": "Upload",
+  "404SubTitle": "Sorry, the page you visited does not exist.",
+  "projectSettings": {
+    "title": "Project Settings",
+    "theme": "Theme"
+  }
 }

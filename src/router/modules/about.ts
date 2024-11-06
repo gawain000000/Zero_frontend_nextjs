@@ -1,35 +1,35 @@
-import { UserOutlined } from "@ant-design/icons";
-import { createElement, lazy } from "react";
+import { UserOutlined } from '@ant-design/icons'
+import { createElement, lazy } from 'react'
 
-import type { AppRouteRecordRaw } from "../types";
+import type { AppRouteRecordRaw } from '../types'
 
-import { ContainerLayout } from "#src/layout";
-import { t } from "#src/locales";
+import { ContainerLayout } from '#src/layout'
+import { t } from '#src/locales'
 
-const About = lazy(() => import("#src/pages/about"));
+const About = lazy(() => import('#src/pages/about'))
 
 const routes: AppRouteRecordRaw[] = [
-	{
-		path: "/about",
-		id: "about",
-		Component: ContainerLayout,
-		handle: {
-			sort: 100,
-			title: t("common.menu.about"),
-			icon: createElement(UserOutlined),
-		},
-		children: [
-			{
-				index: true,
-				id: "about_index",
-				Component: About,
-				handle: {
-					title: t("common.menu.about"),
-					icon: createElement(UserOutlined),
-				},
-			},
-		],
-	},
-];
+  {
+    path: '/about',
+    id: 'about',
+    Component: ContainerLayout,
+    handle: {
+      sort: 100,
+      title: t('common.menu.about'),
+      icon: createElement(UserOutlined),
+    },
+    children: [
+      {
+        index: true,
+        id: 'about_index',
+        Component: About,
+        handle: {
+          title: t('common.menu.about'),
+          icon: createElement(UserOutlined),
+        },
+      },
+    ],
+  },
+]
 
-export default routes;
+export default routes
